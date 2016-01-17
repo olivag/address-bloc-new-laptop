@@ -125,6 +125,15 @@ RSpec.describe AddressBook do
       expect(entry).to be_nil
     end
   end
+
+  context "#nuke" do
+    it "deletes all entries in AddressBook" do
+      book.import_from_csv("entries.csv")
+      expect(book.entries.size).to eq 5
+      book.nuke
+      expect(book.entries.size).to eq 0
+    end
+  end
 end
 
 
